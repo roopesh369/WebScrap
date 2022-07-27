@@ -1,12 +1,11 @@
 const express = require('express');
-const { Builder, By } = require('selenium-webdriver');
+const { Builder, By } = require('selenium-webdriver');// importing required libraries
  
 const app = express();
 const port = 3000;
 app.get('/', async (request, response) => {
- // Web Scraping Code here
  try {
-   const data = await WebScrapingLocalTest();
+   const data = await WebScrapFunct();
    response.status(200).json(data);
  } catch (error) {
    response.status(500).json({
@@ -16,9 +15,9 @@ app.get('/', async (request, response) => {
 });
 app.listen(port, () => {
  console.log(`Example app listening at http://localhost:${port}`);
-});
+});   //express server started for listening requests on 127.0.0.1:3000
  
-async function WebScrapingLocalTest() {
+async function WebScrapFunct() {
  try {
    driver = await new Builder().forBrowser('chrome').build();
 //    await driver.get('https://www.youtube.com/c/WebDevSimplified/videos');
