@@ -1,5 +1,5 @@
 const express = require('express');
-const { Builder, By } = require('selenium-webdriver');// importing required libraries
+const { Builder, By } = require('selenium-webdriver');  // importing required libraries
  
 const app = express();
 const port = 3000;
@@ -32,7 +32,7 @@ async function WebScrapFunct() {
    await driver.quit();
  }
 }
-async function getVideos(videos) {
+async function getVideos(videos) {  // Function to extract details from HTML collection
     let videoDetails = [];
     try {
       for (const video of videos) {
