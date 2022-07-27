@@ -3,23 +3,26 @@ const { Builder, By } = require('selenium-webdriver');  // importing required li
  
 const app = express();
 const port = 3000;
-app.get('/', async (request, response) => {
+app.get('/', async (req, res) => {
  try {
    const data = await WebScrapFunct();
-   response.status(200).json(data);
+   res.status(200).json(data);
  } catch (error) {
-   response.status(500).json({
+   res.status(500).json({
      message: 'Server error occurred',
    });
  }
 });
+
+//express server started for listening requests on 127.0.0.1:3000
 app.listen(port, () => {
  console.log(`Example app listening at http://localhost:${port}`);
-});   //express server started for listening requests on 127.0.0.1:3000
+});   
  
+//Function for scrapping details - Title Views Published Date
 async function WebScrapFunct() {
  try {
-   driver = await new Builder().forBrowser('chrome').build();
+      driver = await new Builder().forBrowser('chrome').build();
 //    await driver.get('https://www.youtube.com/c/WebDevSimplified/videos');
     await driver.get('https://www.youtube.com/c/IndianHairBeauty/videos');
    const allVideos = await driver.findElements(
